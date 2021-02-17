@@ -28,4 +28,12 @@ Game = (function(){
 
     const p1 = createPlayer('X');
     const p2 = createPlayer('O');
+
+    let currentPlayer = p1;
+    const _togglePlayer = () => (
+        (currentPlayer = (currentPlayer.symbol === 'X') ? p2 : p1)
+    )
+
+
+
 }())
