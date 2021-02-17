@@ -12,7 +12,8 @@ function createGrid(m,n){
 Board = (function(){
     _grid = createGrid(3,3);
     getGrid = () => {return _grid};
+    setMarker = (symbol,row,col) => (_grid[row][col] = symbol);
     reset = () => (_grid = createGrid(3,3));
-    return {getGrid, reset} 
+    return {getGrid, setMarker, reset}
 }())
 
