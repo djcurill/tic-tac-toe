@@ -23,14 +23,15 @@ Game = (function(){
         const isEmpty = (row,col) => {return _grid[row][col] === null};
         const setMarker = (symbol,row,col) => (_grid[row][col] = symbol);
         const reset = () => (_grid = createGrid(3,3));
-        return {getGrid, isEmpty, setMarker, reset}
+        const display = () => (
+            cells.forEach(cell => 
+                cell.textContent= _grid[cell.getAttribute("data-row")][cell.getAttribute("data-col")])
+        )
+        return {getGrid, isEmpty, setMarker, reset, display}
     }())
 
     const p1 = createPlayer('X');
     const p2 = createPlayer('O');
-
-    let currentPlayer = p1;
-    let currentRow, currentCol;
 
     const _togglePlayer = () => (
         (currentPlayer = (currentPlayer.symbol === 'X') ? p2 : p1)
@@ -40,6 +41,8 @@ Game = (function(){
         currentCol = event.target.getAttribute("data-col");
     }
 
-    document.querySelectorAll("div.cell")
-            .forEach(cell => cell.addEventListener("click",_getPosition));
+    let currentPlayer = p1;
+    let currentRow, currentCol;
+    let cells = document.querySelectorAll("div.cell");
+    cells.forEach(cell => cell.addEventListener("click",_getPosition));
 }())
