@@ -11,4 +11,6 @@ function createGrid(m,n){
 
 Board = (function(){
     _grid = createGrid(3,3);
+    getGrid = () => {return _grid}
+    return {getGrid}
 }())
