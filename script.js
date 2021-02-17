@@ -11,8 +11,9 @@ function createGrid(m,n){
 
 Board = (function(){
     let _grid = createGrid(3,3);
-    getGrid = () => {return _grid};
-    setMarker = (symbol,row,col) => (_grid[row][col] = symbol);
-    reset = () => (_grid = createGrid(3,3));
-    return {getGrid, setMarker, reset}
+    const getGrid = () => {return _grid};
+    const isEmpty = (row,col) => {return _grid[row][col] === null};
+    const setMarker = (symbol,row,col) => (_grid[row][col] = symbol);
+    const reset = () => (_grid = createGrid(3,3));
+    return {getGrid, isEmpty, setMarker, reset}
 }())
