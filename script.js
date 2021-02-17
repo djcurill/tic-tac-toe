@@ -11,6 +11,8 @@ function createGrid(m,n){
 
 Board = (function(){
     _grid = createGrid(3,3);
-    getGrid = () => {return _grid}
-    return {getGrid}
+    getGrid = () => {return _grid};
+    reset = () => (_grid = createGrid(3,3));
+    return {getGrid, reset} 
 }())
+
