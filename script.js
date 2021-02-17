@@ -30,10 +30,16 @@ Game = (function(){
     const p2 = createPlayer('O');
 
     let currentPlayer = p1;
+    let currentRow, currentCol;
+
     const _togglePlayer = () => (
         (currentPlayer = (currentPlayer.symbol === 'X') ? p2 : p1)
     )
+    const _getPosition = (event) => {
+        currentRow = event.target.getAttribute("data-row");
+        currentCol = event.target.getAttribute("data-col");
+    }
 
-
-
+    document.querySelectorAll("div.cell")
+            .forEach(cell => cell.addEventListener("click",_getPosition));
 }())
