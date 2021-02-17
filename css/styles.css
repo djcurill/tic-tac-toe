@@ -13,3 +13,11 @@ body{
     width: 400px;
     border: 1px solid black;
 }
+
+.cell{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    font-size: 48px;
+}
