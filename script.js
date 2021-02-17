@@ -5,22 +5,10 @@ function createGrid(m,n){
         for (let j=0; j < n; j++){
             arr[i][j] = null;
         }
+    }
     return arr;
 }
 
 Board = (function(){
-    _grid = () => {
-
-        }
-        return arr;
-    }
-    
-    
-}()
-)
-
-createCell = function(){
-    state  = null;
-    symbol = null;
-
-}
+    _grid = createGrid(3,3);
+}())
