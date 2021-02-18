@@ -1,3 +1,6 @@
+const getRow = el => el.getAttribute("data-row");
+const getCol = el => el.getAttribute("data-col");
+
 function createGrid(m,n){
     let arr = [];
     for (let i=0; i < m; i++){
@@ -25,24 +28,25 @@ Game = (function(){
         const reset = () => (_grid = createGrid(3,3));
         const display = () => (
             cells.forEach(cell => 
-                cell.textContent= _grid[cell.getAttribute("data-row")][cell.getAttribute("data-col")])
+                cell.textContent = _grid[getRow(cell)][getCol(cell)])
         )
         return {getGrid, isEmpty, setMarker, reset, display}
     }())
 
     const p1 = createPlayer('X');
     const p2 = createPlayer('O');
+    let currentPlayer = p1;
+    let cells = document.querySelectorAll("div.cell");
 
-    const _togglePlayer = () => (
-        (currentPlayer = (currentPlayer.symbol === 'X') ? p2 : p1)
-    )
-    const _getPosition = (event) => {
-        currentRow = event.target.getAttribute("data-row");
-        currentCol = event.target.getAttribute("data-col");
+    const setMove = function(event){
+        let row = getRow(event.target);
+        let col = getCol(event.target);
+        if (Board.isEmpty(row,col)){
+            Board.setMarker(currentPlayer.symbol,row,col);
+            Board.display();
+            currentPlayer = (currentPlayer.symbol === 'X') ? p2 : p1
+        }
     }
 
-    let currentPlayer = p1;
-    let currentRow, currentCol;
-    let cells = document.querySelectorAll("div.cell");
-    cells.forEach(cell => cell.addEventListener("click",_getPosition));
+    cells.forEach(cell => cell.addEventListener("click", setMove));
 }())
