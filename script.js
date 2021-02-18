@@ -12,10 +12,13 @@ function createGrid(m,n){
     return arr;
 }
 
-function createPlayer(symbol){
+function createPlayer(symbol,name){
     const getSymbol = () => {return symbol}
-    return {getSymbol}
+    const getName   = () => {return name}
+    return {getSymbol,getName}
 }
+
+
 
 
 
@@ -34,9 +37,8 @@ Game = (function(){
         return {getGrid, isEmpty, setMarker, reset, display}
     }())
 
-    const p1 = createPlayer('X');
-    const p2 = createPlayer('O');
-    let currentPlayer = p1;
+    let p1, p2;
+    let currentPlayer;
     let cells = document.querySelectorAll("div.cell");
 
 
@@ -76,5 +78,16 @@ Game = (function(){
         }
     }
 
+    const initGame = function(event){
+        event.preventDefault();
+        const userData = event.target.elements;
+        p1 = createPlayer('X',userData.player1.value);
+        p2 = createPlayer('O',userData.player2.value);
+        currentPlayer = p1;  
+        document.querySelector("div.player-setup").classList.add("hidden");
+        document.querySelector("div.board").classList.toggle("hidden");
+    }
+
+    document.querySelector("form").addEventListener("submit",initGame);
     cells.forEach(cell => cell.addEventListener("click", setMove));
 }())

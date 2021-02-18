@@ -37,7 +37,7 @@ button {
     overflow: hidden;
     color: #fff;
     background-color: black;
-    padding: 0.75rem 1.5rem;
+    padding: 0.75rem 0.4rem;
     font-family: 'Roboto', sans-serif;
     font-size: 1rem;
     outline: 0;
@@ -46,3 +46,44 @@ button {
     box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.3);
     cursor: pointer;
   }
+
+.player-setup{
+    display: flex;
+    justify-content: center;
+    margin: 2rem;
+}
+
+.hidden{
+    display: none;
+}
+
+.overlay{
+    position: fixed;
+    height: 10rem;
+    width: 100%;
+  }
+
+.form__names{
+    display: grid;
+    grid-template-columns: 1fr 100px;
+    grid-template-rows: 1fr 1fr;
+    justify-items: center;
+    align-items: center;
+    margin: auto;
+}
+
+.form__names__submit{
+    width: 150px;
+    grid-row: 1 / span 2;
+    grid-column: 2;
+    justify-self: start;
+    align-self: center;
+}
+
+.form-container{
+    width: 400px;
+    margin: 0 auto;
+}
+
+
+

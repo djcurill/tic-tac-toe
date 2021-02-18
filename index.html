@@ -10,12 +10,23 @@
 
 <body>
     <div class="center">
-        <h1>Tic-Tac-Toe</h1>
-        <h2>Choose your opponent...</h2>
-        <button>Human</button>
-        <button>Computer</button>
+        <h1>Tic Tac Toe</h1>
+        <div class="player-setup">
+            <form class="form__names">
+                <div>
+                    <label for="player1">Player 1</label>
+                    <input type="text" id="player1" for="player1" name="player1" required>
+                </div>
+                <div>
+                    <label for="player2">Player 2</label>
+                    <input type="text" id="player2" for="player2" name="player2" required>
+                </div>
+                <button type="submit" id="start" class="form__names__submit">Play Game</button>
+            </form>
+        </div>
     </div>
-    <div class="board center">
+
+    <div class="board center hidden">
         <div class="cell" data-row="0" data-col="0"></div>
         <div class="cell" data-row="0" data-col="1"></div>
         <div class="cell" data-row="0" data-col="2"></div>
@@ -26,7 +37,6 @@
         <div class="cell" data-row="2" data-col="1"></div>
         <div class="cell" data-row="2" data-col="2"></div>
     </div>
-    <div class="center">
-        <button>New Game</button>
-    </div>
+
+
 </body>
