@@ -55,7 +55,12 @@ Game = (function(){
     }
 
     const _setScore = function(player){
-        document.getElementById(player.getName()).textContent = `${player.getName()} : ${player.getScore()}`
+        let msg = `${player.getName()}: ${player.getScore()}`;
+        document.getElementById(player.getName()).textContent = msg;
+    }
+
+    const _updateTurnStatus = function(){
+        document.getElementById("turn-status").textContent = `${currentPlayer.getName()}, it is your turn!`;
     }
 
     const checkWinner = function(){
@@ -78,6 +83,7 @@ Game = (function(){
                 document.getElementById("new-game").classList.toggle("hidden");
             }
             currentPlayer = (currentPlayer.getSymbol() === 'X') ? p2 : p1
+            _updateTurnStatus();
         }
     }
 
@@ -96,6 +102,7 @@ Game = (function(){
         document.querySelector("div.player-two-score").id = p2.getName();
         _setScore(p1);
         _setScore(p2);
+        _updateTurnStatus();
     }
 
     const newRound = function(event){
