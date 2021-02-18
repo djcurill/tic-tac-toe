@@ -1,8 +1,11 @@
 body{
     font-family:Arial, Helvetica, sans-serif;
-    display: grid;
-    height: 100vh;
-    place-items: center center;
+}
+
+.center{
+    margin: 0 auto;
+    width: 100%;
+    text-align: center;
 }
 
 .board{
@@ -21,3 +24,19 @@ body{
     border: 1px solid black;
     font-size: 48px;
 }
+
+button {
+    margin: 1rem;
+    position: relative;
+    overflow: hidden;
+    color: #fff;
+    background-color: #6200ee;
+    padding: 1rem 2rem;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    outline: 0;
+    border: 0;
+    border-radius: 0.25rem;
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+  }
