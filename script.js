@@ -13,7 +13,8 @@ function createGrid(m,n){
 }
 
 function createPlayer(symbol){
-    return {symbol}
+    const getSymbol = () => {return symbol}
+    return {getSymbol}
 }
 
 
@@ -24,7 +25,7 @@ Game = (function(){
         let _grid = createGrid(3,3);
         const getGrid = () => {return _grid};
         const isEmpty = (row,col) => {return _grid[row][col] === null};
-        const setMarker = (symbol,row,col) => (_grid[row][col] = symbol);
+        const setMarker = (player,row,col) => (_grid[row][col] = player.getSymbol());
         const reset = () => (_grid = createGrid(3,3));
         const display = () => (
             cells.forEach(cell => 
@@ -42,9 +43,9 @@ Game = (function(){
         let row = getRow(event.target);
         let col = getCol(event.target);
         if (Board.isEmpty(row,col)){
-            Board.setMarker(currentPlayer.symbol,row,col);
+            Board.setMarker(currentPlayer,row,col);
             Board.display();
-            currentPlayer = (currentPlayer.symbol === 'X') ? p2 : p1
+            currentPlayer = (currentPlayer.getSymbol() === 'X') ? p2 : p1
         }
     }
 
