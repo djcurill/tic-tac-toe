@@ -22,9 +22,6 @@ function createPlayer(symbol,name){
 }
 
 
-
-
-
 Game = (function(){
 
     Board = (function(){
@@ -77,6 +74,7 @@ Game = (function(){
             if (checkWinner()){
                 currentPlayer.addPoint();
                 _setScore(currentPlayer);
+                document.getElementById("new-game").classList.toggle("hidden");
             }
             currentPlayer = (currentPlayer.getSymbol() === 'X') ? p2 : p1
         }
@@ -95,7 +93,6 @@ Game = (function(){
 
         document.querySelector("div.player-setup").classList.add("hidden");
         document.querySelector("div.board").classList.toggle("hidden");
-        document.getElementById("new-game").classList.toggle("hidden");
         document.getElementById("scoreboard").classList.toggle("hidden");
         
         document.querySelector("div.player-one-score").id = p1.getName();
@@ -104,6 +101,13 @@ Game = (function(){
         _setScore(p2);
     }
 
+    const newRound = function(event){
+        Board.reset();
+        Board.display();
+        document.getElementById("new-game").classList.toggle("hidden");
+    }
+
+    document.getElementById("new-game-btn").addEventListener("click",newRound);
     document.querySelector("form").addEventListener("submit",initGame);
     cells.forEach(cell => cell.addEventListener("click", setMove));
 }())
