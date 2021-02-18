@@ -81,8 +81,6 @@ Game = (function(){
         }
     }
 
-
-
     const initGame = function(event){
         event.preventDefault();
         const userData = event.target.elements;
