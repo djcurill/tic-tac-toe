@@ -13,9 +13,12 @@ function createGrid(m,n){
 }
 
 function createPlayer(symbol,name){
-    const getSymbol = () => {return symbol}
-    const getName   = () => {return name}
-    return {getSymbol,getName}
+    let score = 0;
+    const getSymbol = () => symbol;
+    const getName   = () => name;
+    const addPoint  = () => score ++;
+    const getScore  = () => score;
+    return {getSymbol,getName, addPoint, getScore}
 }
 
 
@@ -72,10 +75,15 @@ Game = (function(){
             Board.setMarker(currentPlayer,row,col);
             Board.display();
             if (checkWinner()){
-                console.log("Current player is the winner");
+                currentPlayer.addPoint();
+                _setScore(currentPlayer);
             }
             currentPlayer = (currentPlayer.getSymbol() === 'X') ? p2 : p1
         }
+    }
+
+    const _setScore = function(player){
+        document.getElementById(player.getName()).textContent = `${player.getName()} : ${player.getScore()}`
     }
 
     const initGame = function(event){
@@ -83,9 +91,17 @@ Game = (function(){
         const userData = event.target.elements;
         p1 = createPlayer('X',userData.player1.value);
         p2 = createPlayer('O',userData.player2.value);
-        currentPlayer = p1;  
+        currentPlayer = p1;
+
         document.querySelector("div.player-setup").classList.add("hidden");
         document.querySelector("div.board").classList.toggle("hidden");
+        document.getElementById("new-game").classList.toggle("hidden");
+        document.getElementById("scoreboard").classList.toggle("hidden");
+        
+        document.querySelector("div.player-one-score").id = p1.getName();
+        document.querySelector("div.player-two-score").id = p2.getName();
+        _setScore(p1);
+        _setScore(p2);
     }
 
     document.querySelector("form").addEventListener("submit",initGame);

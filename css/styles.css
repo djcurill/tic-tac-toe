@@ -3,9 +3,9 @@ body{
 }
 
 h1{
-    font-size: 2rem;
+    font-size: 3rem;
     font-family: 'Roboto', sans-serif;
-    margin: 1rem;
+    margin: 2rem;
 }
 
 .center{
@@ -83,6 +83,16 @@ button {
 .form-container{
     width: 400px;
     margin: 0 auto;
+}
+
+.scoreboard{
+    display: grid;
+    font-size: 2rem;
+    font-weight: bold;
+    grid-template-columns: 1fr 1fr;
+    width: 500px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 
 
